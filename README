@@ -19,3 +19,22 @@ Use ot your own risk.
 keygem is not appropriate for use by anyone.
 I don't trust you to keep your credentials safe, and you shouldn't either.
 
+Requirements:
+Python
+AutoKey
+SQLite
+
+Design plan:
+
+first run
+Modifies Autokey config for ^F1-3 hotkeys.
+Restarts Autokey
+
+main
+options for making and recalling user/pw combos.
+saves entry in DB
+option to back up db
+option to load hotkeys
+options for various stdout printing of values
+
+
