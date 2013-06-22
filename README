@@ -1,0 +1,21 @@
+keygem
+
+Unwise generator for random usernames and passwords.
+
+Generates random strings for usernames and passwords.
+Stores them so you don't have to remember them.
+Maps them to AutoKeys so you don't have to type them.
+
+Good:
+Random, non-menmonic strings are hard to crack when the website you trusted has a security breach.
+Different username/passwords for everything, so even if one is compromized, the others remain secure.
+
+Bad:
+Your usernames/passwords are all stored on one database making one, weak point of compromise.
+	(but that point is under YOUR control).
+You don't remember your login info, so if you lose your database, you can't log in.
+
+Use ot your own risk.
+keygem is not appropriate for use by anyone.
+I don't trust you to keep your credentials safe, and you shouldn't either.
+
