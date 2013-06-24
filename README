@@ -165,3 +165,17 @@ saved value only
 format as:
 	USER=<username>
 	PW=<password>
+
+files:
+
+cf1
+cf2
+template.json
+keygem
+init-keygem.py
+main-keygem.py
+crypt.php
+ring.kg
+
+
+
