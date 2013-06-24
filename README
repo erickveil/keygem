@@ -38,3 +38,129 @@ option to load hotkeys
 options for various stdout printing of values
 
 
+pseudo:
+
+start
+Detect dependencies:
+	autokey has ~/$USER/.config/autokey directory
+	sqlite
+	Fatal error if prerequisite software not present.
+If present:
+	Detect if autokey has hotkeys set (detect ctrl F1-3)
+	if yes:
+		Detect if scripts match correctly
+		Script has ID comment headder to check for
+		if no:
+			Other autokey has control over hotkey. Warn and set flag that the keys will be unavailable.
+		if yes,
+			No changes needed
+	if no:
+		autokey scripts for keygem blueprint in json file
+		copy file contents into correct place in autokey config file
+	Detect if database exists
+	if no:
+		run sqlite command that creates database and empty table
+		set first run flag
+	if yes:
+		skip
+Prompt for password:
+	This password will be used to encrypt/decrypt every entry in the db.
+	So encrypt before saving hash in each field
+	Decrypt after retreiving each hash.
+
+	Is this first run? 
+	Yes: set password
+		Two prompts, values must match.
+		no match:
+			fail
+		if match:
+			login table created
+			password stored as bcrypt hash
+	No:
+		One prompt
+		decrypt vs saved password
+		no match:
+			fail
+		match:
+			password is used as salt for 2-way encryption on data saved in the keyring table
+	
+Initialization is complete at this point.
+
+Get options:
+
+Action options:
+create
+	Requires -a/--app option
+	Check for modifier options
+	also adds current date field
+recall
+	requires -a/--app
+	filter response with -u for user only, -p for password only, both or none for neither
+		recall and edit cycles through the app field of the db.
+		using the provided app name, attempts to decrypt each value until a match
+		if no match, assumed value is not saved
+		if match, 
+			first check date field and compare to today
+			if today > 90 days, and no -q option, print reminder to change password
+edit
+	requires -a/--app
+	optional -p for overriding random
+	edits the password already stored
+backup <path>
+	saves a duplicate of the db to the provided path
+	no options
+changepass
+	for changing the main password
+	prompts for existing password
+	prompts twice for matching new password
+	if all good, saves new hash
+
+Argument options:
+-a --app=<string>
+	The index id for the data.
+	Cannot be duplicate, used to look up user name and password.
+	Cannot be null.
+	value is encrypted before storing with bcrypt
+-u --user=<string>
+	Instead of generating a random username, use the one provided.
+	Cannot be null.
+-p --pw=<string>
+	Instead of generating a random password, use the one provided.
+	Cannot be null
+-k --autokey
+	Load the values into the autokey scripts
+	Puts the values in files in .config
+	Scripts load values from files
+	ctrl F1 user name
+	ctrl F2 password
+	ctrl F3 deletes the files
+-o --stdout
+	prints the values to stdout, see stdout modifiers
+
+Modifier options:
+Generator modifiers:
+Where <n> = "p" or "u", Indicating that this modifier applies to either the password or user name generated
+-n --no-num=<n>
+	Omit numbers from the password
+-s --no-special=<n>
+	Omit special characters from the password
+-l --lower-case=<n>
+	Use only lower case letters
+-U --upper-case=<n>
+	Use only upper case letters
+-X --no-letters=<n>
+	Omit letters from the password
+-n --length-pw=<l>
+	Length of the password
+-L --length-usr=<l>
+	Length of the username
+
+Output modifiers:
+
+default output:
+saved value only
+
+-f --format
+format as:
+	USER=<username>
+	PW=<password>
