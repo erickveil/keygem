@@ -20,7 +20,7 @@
             {
                 "usageCount": 8, 
                 "omitTrigger": false, 
-                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/\"\nfullpath = path+\"cf1\"\nfile = open(fullpath,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
                 "prompt": false, 
                 "description": "user", 
                 "abbreviation": {
@@ -48,7 +48,7 @@
             {
                 "usageCount": 0, 
                 "omitTrigger": false, 
-                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/\"\nfullpath=path+\"cf2\"\nfile = open(fullpath,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
                 "prompt": false, 
                 "description": "pw", 
                 "abbreviation": {
@@ -76,7 +76,7 @@
             {
                 "usageCount": 0, 
                 "omitTrigger": false, 
-                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'w')\nfile.close()\npath = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'w')\nfile.close()", 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/\"\nfullpath = path+\"cf1\"\nfile = open(fullpath,'w')\nfile.close()\npath = \"/home/amnesia/Persistent/src/keygem/\"\nfullpath = path+\"cf2\"\nfile = open(fullpath,'w')\nfile.close()", 
                 "prompt": false, 
                 "description": "clear", 
                 "abbreviation": {
