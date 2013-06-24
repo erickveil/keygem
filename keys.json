@@ -1,66 +1,8 @@
 [
     {
-        "usageCount": 0, 
-        "omitTrigger": false, 
-        "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'w')\nfile.close()\npath = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'w')\nfile.close()", 
-        "prompt": false, 
-        "description": "clear", 
-        "abbreviation": {
-            "ignoreCase": false, 
-            "wordChars": "[\\w]", 
-            "immediate": false, 
-            "abbreviation": null, 
-            "backspace": true, 
-            "triggerInside": false
-        }, 
-        "hotkey": {
-            "hotKey": "<f3>", 
-            "modifiers": [
-                "<ctrl>"
-            ]
-        }, 
-        "modes": [
-            3
-        ], 
-        "showInTrayMenu": false, 
-        "filter": null, 
-        "type": "script", 
-        "store": {}
-    }, 
-    {
-        "usageCount": 0, 
-        "omitTrigger": false, 
-        "code": "path = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
-        "prompt": false, 
-        "description": "pw", 
-        "abbreviation": {
-            "ignoreCase": false, 
-            "wordChars": "[\\w]", 
-            "immediate": false, 
-            "abbreviation": null, 
-            "backspace": true, 
-            "triggerInside": false
-        }, 
-        "hotkey": {
-            "hotKey": "<f2>", 
-            "modifiers": [
-                "<ctrl>"
-            ]
-        }, 
-        "modes": [
-            3
-        ], 
-        "showInTrayMenu": false, 
-        "filter": null, 
-        "type": "script", 
-        "store": {}
-    }, 
-    {
+        "folders": [], 
         "usageCount": 8, 
-        "omitTrigger": false, 
-        "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
-        "prompt": false, 
-        "description": "user", 
+        "modes": [], 
         "abbreviation": {
             "ignoreCase": false, 
             "wordChars": "[\\w]", 
@@ -69,18 +11,99 @@
             "backspace": true, 
             "triggerInside": false
         }, 
+        "title": "keygem", 
         "hotkey": {
-            "hotKey": "<f1>", 
-            "modifiers": [
-                "<ctrl>"
-            ]
+            "hotKey": null, 
+            "modifiers": []
         }, 
-        "modes": [
-            3
+        "items": [
+            {
+                "usageCount": 8, 
+                "omitTrigger": false, 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
+                "prompt": false, 
+                "description": "user", 
+                "abbreviation": {
+                    "ignoreCase": false, 
+                    "wordChars": "[\\w]", 
+                    "immediate": false, 
+                    "abbreviation": null, 
+                    "backspace": true, 
+                    "triggerInside": false
+                }, 
+                "hotkey": {
+                    "hotKey": "<f1>", 
+                    "modifiers": [
+                        "<ctrl>"
+                    ]
+                }, 
+                "modes": [
+                    3
+                ], 
+                "showInTrayMenu": false, 
+                "filter": null, 
+                "type": "script", 
+                "store": {}
+            }, 
+            {
+                "usageCount": 0, 
+                "omitTrigger": false, 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'r')\noutput = file.readline()\noutput=output.strip()\nkeyboard.send_keys(output)\nfile.close()", 
+                "prompt": false, 
+                "description": "pw", 
+                "abbreviation": {
+                    "ignoreCase": false, 
+                    "wordChars": "[\\w]", 
+                    "immediate": false, 
+                    "abbreviation": null, 
+                    "backspace": true, 
+                    "triggerInside": false
+                }, 
+                "hotkey": {
+                    "hotKey": "<f2>", 
+                    "modifiers": [
+                        "<ctrl>"
+                    ]
+                }, 
+                "modes": [
+                    3
+                ], 
+                "showInTrayMenu": false, 
+                "filter": null, 
+                "type": "script", 
+                "store": {}
+            }, 
+            {
+                "usageCount": 0, 
+                "omitTrigger": false, 
+                "code": "path = \"/home/amnesia/Persistent/src/keygem/cf1\"\nfile = open(path,'w')\nfile.close()\npath = \"/home/amnesia/Persistent/src/keygem/cf2\"\nfile = open(path,'w')\nfile.close()", 
+                "prompt": false, 
+                "description": "clear", 
+                "abbreviation": {
+                    "ignoreCase": false, 
+                    "wordChars": "[\\w]", 
+                    "immediate": false, 
+                    "abbreviation": null, 
+                    "backspace": true, 
+                    "triggerInside": false
+                }, 
+                "hotkey": {
+                    "hotKey": "<f3>", 
+                    "modifiers": [
+                        "<ctrl>"
+                    ]
+                }, 
+                "modes": [
+                    3
+                ], 
+                "showInTrayMenu": false, 
+                "filter": null, 
+                "type": "script", 
+                "store": {}
+            }
         ], 
-        "showInTrayMenu": false, 
         "filter": null, 
-        "type": "script", 
-        "store": {}
+        "type": "folder", 
+        "showInTrayMenu": false
     }
 ]
