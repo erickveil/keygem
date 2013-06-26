@@ -5,7 +5,7 @@ Erick Veil
 2013-06-24
 
 """
-import json, sys, os, getpass, subprocess
+import json, sys, os, getpass, subprocess, signal
 
 folder_count=0
 keyset_flag=False
@@ -115,6 +115,12 @@ def get_is_autokey_running():
 """0.3.0"""
 def suspend_autokey():
     """placeholder"""
+
+    proc=subprocess.Popen(["pgrep","autokey"],stdout=subprocess.PIPE)
+    for pid in proc.stdout:
+        os.kill(int(pid),signal.SIGTERM)
+
+    return get_is_autokey_running()
 
 """0.4.0"""
 def inject_into_autokey_config():
