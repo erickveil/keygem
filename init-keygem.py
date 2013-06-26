@@ -59,7 +59,6 @@ def search_folders_for_hotkeys(dic_root):
     keys' members.
     Uses recursion to hit nested folders.
     """
-    global folder_count
 
     for key in dic_root:
         if key=="folders":
@@ -129,6 +128,25 @@ def inject_into_autokey_config():
 
     config_obj=load_autokey_config()
     template=load_template()
+
+    user=get_linux_user_name()
+    config_path="/home/"+user+"/.config/autokey/autokey.json"
+    try:
+        config_file=open(config_path,'w')
+    except IOError:
+        return -1
+
+# doesnt insert template
+    for key in config_obj:
+        if key=="folders":
+            config_obj[key].append(template)
+            break
+
+# saves in wierd format
+    json.dump(config_obj,config_file)
+
+    config_file.close()
+
 
 """0.4.1"""
 def load_template():
