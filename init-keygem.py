@@ -41,19 +41,8 @@ def get_is_fkeys_used():
     """
     global keyset_flag 
 
-    user=get_linux_user_name()
-    config_path="/home/"+user+"/.config/autokey/autokey.json"
-
-    try:
-        config_file=open(config_path,'r')
-    except IOError:
-        return -1
-
-    config_obj=json.load(config_file)
-
+    config_obj=load_autokey_config()
     search_folders_for_hotkeys(config_obj)
-
-    config_file.close()
 
     return keyset_flag
 
@@ -99,6 +88,15 @@ def search_folder_items(items_root):
             if autokey=="<f1>" or autokey=="<f2>" or autokey=="<f3>":
                 keyset_flag=True
 
+"""0.1.3"""
+def load_autokey_config():
+    """returns the loaded json object
+    """
+    user=get_linux_user_name()
+    config_path="/home/"+user+"/.config/autokey/autokey.json"
+
+    return load_json(config_path)
+
 """0.2.0"""
 def get_is_autokey_running():
     """Uses the shell to check if a process is running
@@ -114,7 +112,10 @@ def get_is_autokey_running():
 
 """0.3.0"""
 def suspend_autokey():
-    """placeholder"""
+    """Kills the outokey process. You should first check to make sure it's
+    running.
+    Returns true if succeeds, false if it fails.
+    """
 
     proc=subprocess.Popen(["pgrep","autokey"],stdout=subprocess.PIPE)
     for pid in proc.stdout:
@@ -126,6 +127,29 @@ def suspend_autokey():
 def inject_into_autokey_config():
     """placeholder"""
 
+    config_obj=load_autokey_config()
+    template=load_template()
+
+"""0.4.1"""
+def load_template():
+    """loads the template into paths"""
+    path=os.path.dirname(os.path.abspath(__file__))
+
+    return load_json(path)
+
+"""0.4.1.1"""
+def load_json(path):
+    """a more generic way to load paths sinsce I do this multiple times"""
+
+    try:
+        config_file=open(path,'r')
+    except IOError:
+        return -1
+
+    config_obj=json.load(config_file)
+    config_file.close()
+
+    return config_obj
 
 """0.5.0"""
 def start_autokey():
