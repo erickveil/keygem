@@ -22,7 +22,6 @@ def import_autokey_scripts():
     if used!=-1 and used:
         return False
 
-    get_is_autokey_running()
     if get_is_autokey_running():
         suspend_autokey()
 
@@ -102,15 +101,16 @@ def search_folder_items(items_root):
 
 """0.2.0"""
 def get_is_autokey_running():
-    """placeholder"""
+    """Uses the shell to check if a process is running
+    This appears to work better than any sorting through the contents of /proc
+    trying to determine if one of the files there is what I'm looking for.
+    """
 
-    print "hello"
-    """result=subprocess.Popen("ps",stdout=subprocess.PIPE)
-    for line in result.stdout.readlines():
-        print ":"+line
-        """
-
-    return True
+    is_running=subprocess.call("ps -A | grep autokey > /dev/null",shell=True)
+    if(is_running==0):
+        return True
+    else:
+        return False
 
 """0.3.0"""
 def suspend_autokey():
