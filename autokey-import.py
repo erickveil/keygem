@@ -19,10 +19,12 @@ def import_autokey_scripts():
 
     returns False if it fails, preventing the use of autokey with keygem.
     returns True on success.
-
     """
 
     used=get_is_fkeys_used()
+    if(used==-1) or (len(sys.argv)<2):
+        return -1
+
     if used!=-1 and used:
         if not get_is_autokey_running():
             start_autokey()
