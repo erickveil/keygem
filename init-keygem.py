@@ -4,6 +4,9 @@ Checks for first run conditions and maintains initial setup.
 Erick Veil
 2013-06-24
 
+required argument: the name of the template file to be imported into autokey.
+The file must be a json file in the format exported by autokey.
+
 """
 import json, sys, os, getpass, subprocess, signal
 
@@ -136,10 +139,9 @@ def inject_into_autokey_config():
     except IOError:
         return -1
 
-# doesnt insert template
     for key in config_obj:
         if key=="folders":
-            config_obj[key].append(template)
+            config_obj[key]=config_obj[key]+template
             break
 
 # saves in wierd format
@@ -150,8 +152,11 @@ def inject_into_autokey_config():
 
 """0.4.1"""
 def load_template():
-    """loads the template into paths"""
+    """loads the template into paths
+    gets the template name from the first argument
+    """
     path=os.path.dirname(os.path.abspath(__file__))
+    path+=("/"+sys.argv[1])
 
     return load_json(path)
 
