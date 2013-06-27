@@ -21,8 +21,11 @@ def import_autokey_scripts():
     returns True on success.
 
     """
+
     used=get_is_fkeys_used()
     if used!=-1 and used:
+        if not get_is_autokey_running():
+            start_autokey()
         return False
 
     if get_is_autokey_running():
