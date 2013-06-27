@@ -144,7 +144,6 @@ def inject_into_autokey_config():
             config_obj[key]=config_obj[key]+template
             break
 
-# saves in wierd format
     json.dump(config_obj,config_file)
 
     config_file.close()
@@ -176,8 +175,9 @@ def load_json(path):
 
 """0.5.0"""
 def start_autokey():
-    """placeholder"""
+    """launches autokey without any command line output"""
 
+    os.system("autokey > /dev/null 2>&1 &")
 
 """0.6.0"""
 def touch_key_files():
