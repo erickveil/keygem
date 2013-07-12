@@ -1,7 +1,7 @@
 
 keygem
 
-Unwise generator for random usernames and passwords.
+Generator for random usernames and passwords.
 
 Generates random strings for usernames and passwords.
 Stores them so you don't have to remember them.
@@ -177,5 +177,32 @@ main-keygem.py
 crypt.php
 ring.kg
 
+NEXT TO DO:
 
+- template scripts (edit from autokey) need a more dynamic way of determining
+  the path to the cf files. The cf files appear in the keygem directory, but
+  that directory could be anywhere. Since the calling program is autokey, the
+  path to self will not work. Perhaps place the cf files in .config in home..
+
+- initilaize the SQLlite database if not present
+
+Final consideration and justification for my efforts:
+
+The concept of a securty scheme involving both logical and physical components.
+On your bank's website, there is no physical component. Your access to your
+account online is purely logical. Your password, username, et al, can be
+guessed.
+
+Keep your keygem file on a USB stick. This is your physical. Allow keygem to
+generate impossible to remember, long, random strings for your username and password
+to your bank account.
+
+You now need this stick to access your account (physical).
+You also need to know your password to keygem to use the stick (logical).
+
+Even if your password is conditioned from you, it is useless without the stick.
+Even if the stick is stolen from you, it is useless without the password.
+
+The code of keygem is open for your personal security audit. You know what is done with
+your information, you know there is no back door.
 
