@@ -1,6 +1,5 @@
-"""Initializes keygem
+"""Initializes keygem's autokey scripts
 
-Checks for first run conditions and maintains initial setup.
 Erick Veil
 2013-06-24
 
