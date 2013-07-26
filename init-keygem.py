@@ -58,13 +58,14 @@ def local_error(msg):
 
 """main"""
 
-filepath=sys.argv[1];
-if filepath=="":
+if len(sys.argv) > 1:
+    filepath=sys.argv[1];
+else:
     user=getpass.getuser()
     filepath="/home/"+user+"/.ring.kg"
 
 if not is_db_exists(filepath):
-    if is_sqlite_installed(filepath):
+    if is_sqlite_installed():
         create_db(filepath)
     else:
         localError("keygem requires sqlite3 to be installed to work.");
