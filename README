@@ -137,6 +137,11 @@ Argument options:
 	ctrl F3 deletes the files
 -o --stdout
 	prints the values to stdout, see stdout modifiers
+-f --file=<path>
+    If omitted, uses /home/$USER/.ring.kg as the default database. File at path
+    should be a keygem generated sqlite file. If file (or default) does not
+    exist, it will be created and initialized. If the target is the wrong
+    filetype, you will receive an error.
 
 Modifier options:
 Generator modifiers:
@@ -161,7 +166,7 @@ Output modifiers:
 default output:
 saved value only
 
--f --format
+-F --format
 format as:
 	USER=<username>
 	PW=<password>

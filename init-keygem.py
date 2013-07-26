@@ -3,19 +3,19 @@
 Erick Veil
 2013-07-25
 
+Optional argument is file path to database
+
 """
-import os, getpass, subprocess
+import os, getpass, subprocess, sys
 
 """0.1.0"""
-def is_db_exists():
+def is_db_exists(filepath):
     """checks to see if the db is in the home directory"""
 
-    user=getpass.getuser()
-    filename="/home/"+user+"/.ring.kg"
-    return os.path.isfile(filename)
+    return os.path.isfile(filepath)
 
 """0.2.0"""
-def create_db():
+def create_db(filepath):
     """creates the database
     
     Caution, this will clear out an existing database.
@@ -24,25 +24,23 @@ def create_db():
     TODO: Perhaps I should have a configuration file that defines the location
     of the database. Or should the user have to provide it as an argument?
     """
-    user=getpass.getuser()
-    filepath="/home/"+user+"/.ring.kg"
     print("creating new database at "+filepath)
 
     cmd="sqlite "+filepath+" < initdb.sql"
     return subprocess.call(cmd,shell=True) 
 
 """0.3.0"""
-def is_password_set():
+def is_password_set(filepath):
     """placeholder"""
     return True
 
 """0.4.0"""
-def sign_up_user():
+def sign_up_user(filepath):
     """placeholder"""
     return True
 
 """0.5.0"""
-def log_in_user():
+def log_in_user(filepath):
     """placeholder"""
     return True
 
@@ -59,15 +57,21 @@ def local_error(msg):
 
 
 """main"""
-if not is_db_exists():
-    if is_sqlite_installed():
-        create_db()
+
+filepath=sys.argv[1];
+if filepath=="":
+    user=getpass.getuser()
+    filepath="/home/"+user+"/.ring.kg"
+
+if not is_db_exists(filepath):
+    if is_sqlite_installed(filepath):
+        create_db(filepath)
     else:
         localError("keygem requires sqlite3 to be installed to work.");
 
-if not is_password_set():
-    user_valid=sign_up_user()
+if not is_password_set(filepath):
+    user_valid=sign_up_user(filepath)
 else:
-    user_valid=log_in_user()
+    user_valid=log_in_user(filepath)
 
-
+print(user_valid)
