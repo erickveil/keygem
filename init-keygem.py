@@ -32,6 +32,7 @@ def create_db(filepath):
 """0.3.0"""
 def is_password_set(filepath):
     """placeholder"""
+
     return True
 
 """0.4.0"""
@@ -68,7 +69,8 @@ if not is_db_exists(filepath):
     if is_sqlite_installed():
         create_db(filepath)
     else:
-        localError("keygem requires sqlite3 to be installed to work.");
+        localError("keygem requires sqlite to be installed to work.");
+        sys.exit(1)
 
 if not is_password_set(filepath):
     user_valid=sign_up_user(filepath)
@@ -76,3 +78,5 @@ else:
     user_valid=log_in_user(filepath)
 
 print(user_valid)
+sys.exit(0)
+
