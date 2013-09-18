@@ -32,15 +32,17 @@ def create_db(filepath):
 def is_password_set(filepath):
     """placeholder"""
 
-    print("printing rows from "+filepath);
+    ret=True
     conn=sqlite3.connect(filepath);
     curs=conn.cursor();
     rows=curs.execute("select * from cred");
+    first_line=rows.fetchone();
     
-    print rows;
+    if first_line==None:
+        ret=False
 
     conn.close();
-    return True
+    return ret 
 
 """0.4.0"""
 def sign_up_user(filepath):
@@ -80,8 +82,10 @@ if not is_db_exists(filepath):
         sys.exit(1)
 
 if not is_password_set(filepath):
+    print("password not set")
     user_valid=sign_up_user(filepath)
 else:
+    print("password set");
     user_valid=log_in_user(filepath)
 
 print(user_valid)
