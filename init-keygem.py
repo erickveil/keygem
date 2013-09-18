@@ -6,7 +6,7 @@ Erick Veil
 Optional argument is file path to database
 
 """
-import os, getpass, subprocess, sys
+import os, getpass, subprocess, sys, sqlite3
 
 """0.1.0"""
 def is_db_exists(filepath):
@@ -19,20 +19,27 @@ def create_db(filepath):
     """creates the database
     
     Caution, this will clear out an existing database.
-    Obscure caution: is using Tails, you will want to use the backup option to
-    save this database in a more persistent location.
-    TODO: Perhaps I should have a configuration file that defines the location
-    of the database. Or should the user have to provide it as an argument?
+    User can define an alternate locating and generate a new database by
+    providing the filepath as an argument to this script.
+    Main checks if the database exists before calling this function.
     """
     print("creating new database at "+filepath)
 
-    cmd="sqlite "+filepath+" < initdb.sql"
+    cmd="sqlite3 "+filepath+" < initdb.sql"
     return subprocess.call(cmd,shell=True) 
 
 """0.3.0"""
 def is_password_set(filepath):
     """placeholder"""
 
+    print("printing rows from "+filepath);
+    conn=sqlite3.connect(filepath);
+    curs=conn.cursor();
+    rows=curs.execute("select * from cred");
+    
+    print rows;
+
+    conn.close();
     return True
 
 """0.4.0"""
@@ -69,7 +76,7 @@ if not is_db_exists(filepath):
     if is_sqlite_installed():
         create_db(filepath)
     else:
-        localError("keygem requires sqlite to be installed to work.");
+        localError("keygem requires sqlite3 to be installed to work.");
         sys.exit(1)
 
 if not is_password_set(filepath):
