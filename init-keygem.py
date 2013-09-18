@@ -30,7 +30,14 @@ def create_db(filepath):
 
 """0.3.0"""
 def is_password_set(filepath):
-    """placeholder"""
+    """Determines if a password for the db has been set
+
+    The cred table holds one encrypted password. If this table is empty, then
+    we need to register the user. If not, then we need to validate the user
+    provided password against the saved value.
+
+    At this point, the database and tables should exist.
+    """
 
     ret=True
     conn=sqlite3.connect(filepath);
